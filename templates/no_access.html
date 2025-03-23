@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Denied</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <!-- Hamburger Menu -->
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    
+    <!-- Sliding Menu -->
+    <div class="menu-overlay" id="menu">
+        <span class="close-btn" onclick="toggleMenu()">&times;</span>
+        <a href="/">Home</a>
+        <a href="/results">Results</a>
+        <a href="/login">Log-In</a>
+    </div>  
+    
+    <div class="access-denied-container">
+        <!-- Animated Animal Saying Sorry -->
+        <div class="sorry-animation">
+            <img src="/static/sorry.gif" alt="Sorry Animation">
+        </div>
+
+        <h1>❌ Sorry!!! <br>You  need to log in to see scan results.</h1>
+        
+        
+
+        <p><a href="/login">Log in here</a></p>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+
+.receipt-container {
+    width: 60%;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    font-family: "Courier New", Courier, monospace;
+    text-align: center;
+}
+
+.receipt-header {
+    border-bottom: 2px dashed #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.scan-date {
+    font-size: 14px;
+    color: #666;
+}
+
+.receipt-body {
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.receipt-body ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.receipt-body li {
+    background: #f4f4f4;
+    padding: 5px;
+    margin: 5px 0;
+    border-radius: 5px;
+}
+
+.scan-results p {
+    background: #f9f9f9;
+    padding: 8px;
+    border-left: 5px solid teal;
+    margin: 5px 0;
+}
+
+.receipt-footer {
+    border-top: 2px dashed #ddd;
+    padding-top: 10px;
+    margin-top: 10px;
+    font-style: italic;
+}
+
+.back-btn {
+    display: inline-block;
+    padding: 10px;
+    background: teal;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.bb{
+    color: white;
+}
+
+
+
+/* Profile Section */
+.profile-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.username {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.profile-circle {
+    width: 40px;
+    height: 40px;
+    background-color: teal;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.menu-overlay .logout {
+    
+    color: rgb(248, 63, 63);
+    
+}
+
+/* Hamburger Menu Icon */
+.menu-icon {
+    font-size: 30px;
+    cursor: pointer;
+    user-select: none;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+/* Full-Screen Sliding Menu */
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: -250px; /* Initially hidden */
+    width: 250px;
+    height: 100%;
+    background: teal;
+    color: white;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* Menu Links */
+.menu-overlay a {
+    display: block;
+    padding: 15px;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    transition: 0.3s;
+}
+
+.menu-overlay a:hover {
+    background: rgb(0, 97, 97);
+}
+
+
+.download-btn {
+    display: inline-block;
+    padding: 10px 15px;
+    background: teal;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.download-btn:hover {
+    background: darkslategray;
+}

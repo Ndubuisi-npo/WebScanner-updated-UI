@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scan Report</title>
+    <link rel="stylesheet" href="/static/scan_report.css">
+</head>
+<body>
+
+    <!-- Profile Section (Only visible if logged in) -->
+    {% if session.get("logged_in") %}
+    <div class="profile-container">
+        <span class="username">{{ session.get("username", "User") }}</span>
+        <div class="profile-circle">{{ session.get("username", "U")[0]|upper }}</div>
+    </div>
+    {% endif %}
+
+    <!-- Hamburger Menu -->
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+    <!-- Sliding Menu -->
+    <div class="menu-overlay" id="menu">
+        <span class="close-btn" onclick="toggleMenu()">&times;</span>
+        <a href="/">Home</a>
+        <a href="/results">Results</a>
+        
+        {% if session.get("logged_in") %}
+            <a href="/logout" class="logout">Log-Out</a>  <!-- Show Logout if logged in -->
+        {% else %}
+            <a href="/login">Log-In</a>  <!-- Show Login if not logged in -->
+        {% endif %}
+    </div>
+
+    <div class="receipt-container">
+        <div class="receipt-header">
+            <h2>🛡️ Security Scan Report</h2>
+            <p class="scan-date"><strong>Date:</strong> {{ scan.scan_date }}</p>
+        </div>
+
+        <div class="receipt-body">
+            <p><strong>Scans Performed:</strong></p>
+            <ul>
+                {% for scan_type in scan.scan_types.split(",") %}
+                    <li>{{ scan_type.strip() }}</li>
+                {% endfor %}
+            </ul>
+
+            <h3>Scan Results:</h3>
+            <div class="scan-results">
+                {% if scan.scan_results is string %}
+                    <pre>{{ scan.scan_results.replace(',', ',\n') | safe }}</pre>
+                {% elif scan.scan_results is iterable %}
+                    <ul>
+                        {% for key, value in scan.scan_results.items() %}
+                            <li><strong>{{ key }}:</strong> {{ value }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No scan results available.</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="receipt-footer">
+            <p>🔍 End of Report</p>
+            <a href="/download_report/{{ scan.id }}" class="download-btn">⬇️ Download Report</a>
+        </div>
+
+        <a href="/results" class="back-btn">Back to Results</a>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

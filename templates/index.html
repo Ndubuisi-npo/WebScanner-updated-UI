@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Scanner</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <script src="https://kit.fontawesome.com/YOUR_FA_KIT.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+
+    <!-- Hamburger Menu -->
+<div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+<!-- Sliding Menu -->
+<div class="menu-overlay" id="menu">
+    <span class="close-btn" onclick="toggleMenu()">&times;</span>
+    <a href="/">Home</a>
+    <a href="/results">Results</a>
+    
+    {% if session.get("logged_in") %}
+        <a href="/logout" class="logout">Log-Out</a>  <!-- Show Logout if logged in -->
+    {% else %}
+        <a href="/login">Log-In</a>  <!-- Show Login if not logged in -->
+    {% endif %}
+</div>
+
+
+    
+
+     <!-- Profile Section (Only visible if logged in) -->
+     {% if session.get("logged_in") %}
+     <div class="profile-container">
+         <span class="username">{{ session.get("username", "User") }}</span>
+         <div class="profile-circle">{{ session.get("username", "U")[0]|upper }}</div>
+     </div>
+ {% endif %}
+ 
+
+    <div class="container">
+        <h1>Website Vulnerability Scanner</h1>
+        <form id="scan-form">
+            <label for="url">Enter Target URL:</label>
+            <input type="text" id="url" name="url" value="http://localhost:3000"required>
+
+            <h3>Select Checks:</h3>
+            <label><input type="checkbox" name="checks" value="sql_injection"> SQL Injection</label>
+            <label><input type="checkbox" name="checks" value="xss"> XSS</label>
+            <label><input type="checkbox" name="checks" value="security_misconfiguration"> Security Misconfigurations</label>
+            <label><input type="checkbox" name="checks" value="sensitive_info"> Sensitive Info Exposure</label>
+            <label><input type="checkbox" name="checks" value="subdomain_enum"> Subdomain Enumeration</label>
+
+            <button type="submit">Start Scan</button>
+        </form>
+
+        <div id="results"></div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

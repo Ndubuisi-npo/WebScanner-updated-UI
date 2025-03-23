@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scan Results</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+
+    <!-- Profile Section (Only visible if logged in) -->
+    {% if session.get("logged_in") %}
+    <div class="profile-container">
+        <span class="username">{{ session.get("username", "User") }}</span>
+        <div class="profile-circle">{{ session.get("username", "U")[0]|upper }}</div>
+    </div>
+{% endif %}
+
+        <!-- Hamburger Menu -->
+<div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+<!-- Sliding Menu -->
+<div class="menu-overlay" id="menu">
+    <span class="close-btn" onclick="toggleMenu()">&times;</span>
+    <a href="/">Home</a>
+    <a href="/results">Results</a>
+    
+    {% if session.get("logged_in") %}
+        <a href="/logout" class="logout">Log-Out</a>  <!-- Show Logout if logged in -->
+    {% else %}
+        <a href="/login">Log-In</a>  <!-- Show Login if not logged in -->
+    {% endif %}
+</div>
+
+<div class="container">
+    <h1>Scan History</h1>
+
+    {% if scans %}
+        <ul class="scan-list">
+            {% for scan in scans %}
+                <li onclick="viewScan('{{ scan.id }}')">
+                    <span class="scan-date">{{ scan.scan_date }}</span>
+                    <span class="scan-types">{{ scan.scan_types }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No scans found.</p>
+    {% endif %}
+</div>
+
+<script>
+function viewScan(scanId) {
+    window.location.href = "/scan_report/" + scanId;
+}
+</script>
+
+
+<script src="/static/script.js"></script>
+</body>
+</html>
